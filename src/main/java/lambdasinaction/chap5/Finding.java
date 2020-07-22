@@ -61,11 +61,12 @@ public class Finding {
 		System.out.println("--------- sum all calories old jdk --------------");
 		System.out.println("Total calories: " + sumCalories(Dish.menu));
 		System.out.println("--------- sum all calories reduce --------------");
-		int sumaTotal = Dish.menu.stream().reduce(0, (acum, d) -> 
+		/*int sumaTotal = Dish.menu.stream().reduce(0, (acum, d) -> 
 		acum + d.getCalories(), Integer::sum);
 		System.out.println("Total calories: " + Dish.menu.stream().reduce(0, (total, d) -> 
 			total + d.getCalories(), Integer::sum
-		));
+		));*/
+		System.out.println("Total of calories: " + sumCaloriesMap(Dish.menu));
 	}
 	
 	public static List<Dish> vegetarianDishes(List<Dish> menu) {
@@ -161,5 +162,9 @@ public class Finding {
 			total += dish.getCalories();
 		}
 		return total;
+	}
+	
+	public static int sumCaloriesMap(List<Dish> menu) {
+		return menu.stream().mapToInt(Dish::getCalories).sum();
 	}
 }
